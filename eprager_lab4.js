@@ -11,11 +11,23 @@ function alertText () {
 }
 
 /////////////////////////// 2 ///////////////////////////
+/*_______________________ DONE _______________________*/
 function dom () {
-  //let range = new Range();
-  //range.setStart(sec2-contentarea, 0);
-  //range.setEnd(sec2-contentarea, 2);
-  //alert(range);
+  var parent = document.getElementById('sec2-contentarea');
+  parent.getElementsByTagName('h3')[0].innerHTML = 'Emma Prager';
+
+  parent.getElementsByTagName('p')[0].style = 'font-weight: bold; font-style: italic; font-size: 12px;';
+
+  parent.getElementsByTagName('img')[0].src = 'img/hamburger_color_icon.png';
+  parent.getElementsByTagName('img')[0].alt = 'Color Hamburger Icon';
+  parent.getElementsByTagName('img')[0].style = 'width: 100px;';
+
+  parent.getElementsByTagName('a')[0].style = 'color: #cc0000; text-decoration: underline;';
+  parent.getElementsByTagName('a')[0].href = 'https://www.iit.edu/';
+  parent.getElementsByTagName('a')[0].target = '_blank';
+  parent.getElementsByTagName('a')[0].innerHTML = 'Illinois Tech Website';
+
+  document.getElementById('sec2-box').style = "background-color: #888888; width: 100%; height: 20px;";
 }
 
 /////////////////////////// 3 ///////////////////////////
@@ -49,7 +61,10 @@ function clear () {
   }
 }
 
-/////////////////////////// 4 ///////////////////////////
+/////////////////////////// 4 //////////////////////////
+/*_______________________ DONE _______________________*/
+var x = 0;
+
 function addBoxes () {
   var colors = document.getElementById("sec4-select1");
   var color = colors.options[colors.selectedIndex].value;
@@ -60,19 +75,43 @@ function addBoxes () {
   }
   else if(isNaN(num)) {
     alert("A non-numeric value was entered!"); 
+  } else if(num < 1) {
+    alert("A numeric value less than 1 was entered!"); 
   } else {
-    /*var div = document.createElement("div");
-    var node = document.createTextNode(result);
-    div.appendChild(node);
+    for(i=0; i<num; i++){
+      var div = document.createElement("div");
+      var node = document.createTextNode("");
+      div.appendChild(node);
+      div.title = 'delete';
 
-    document.getElementById("sec4-contentarea").appendChild(p);
-    document.getElementById("sec3-input").value = "";*/
+      div.id = x;
+
+      div.style = "cursor: pointer; display: inline-block; width: 60px; height: 60px; margin: 5px; background-color:" + color;
+     
+      document.getElementById("sec4-contentarea").appendChild(div);
+      document.getElementById("sec4-input1").value = "";
+      document.getElementById(x).addEventListener("click", deleteBox);
+
+      x++;
+    }
   }  
-
+  document.getElementById("sec4-input1").focus();
 }
 
 function clearBoxes () {
+  var boxes = document.getElementById("sec4-contentarea");
+  
+  while (boxes.hasChildNodes()) {  
+    boxes.removeChild(boxes.firstChild);
+  }
+}
 
+function deleteBox () {
+  var y = event.srcElement.id;
+  let node = document.getElementById(y);
+  if (node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
 }
 
 /////////////////////////// 5 ///////////////////////////
