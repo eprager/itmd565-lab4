@@ -1,2 +1,2 @@
 # Illinois Institute of Technology
-# Spring 20202
+# Spring 2020
